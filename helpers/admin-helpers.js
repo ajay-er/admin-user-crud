@@ -1,7 +1,6 @@
 const db = require("../config/connection");
 const bcrypt = require("bcrypt");
 const collection = require("../config/collection");
-const { response } = require("express");
 
 module.exports = {
   doLoginAdmin: (adminData) => {

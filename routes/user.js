@@ -59,6 +59,21 @@ router.post("/login", (req, res) => {
   });
 });
 
+router.get('/cart',(req,res)=>{
+  res.render('user/cart');
+})
+router.get('/about',(req,res)=>{
+  res.render('user/about');
+})
+
+router.get('/products',(req,res)=>{
+  res.redirect('/')
+})
+
+router.get('/product',(req,res)=>{
+  res.render('user/product');
+})
+
 router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/login");

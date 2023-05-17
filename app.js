@@ -26,18 +26,26 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(fileUpload());
-app.use(session({secret:"key",cookie:{maxAge:600000}}))
-app.use((req,res,next)=>{
+app.use(
+  session({
+    secret: 'secret key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    },
+  })
+);app.use((req,res,next)=>{
   res.header('Cache-Control','no-cache,private,no-Store,must-revalidate,max-scale=0,post-check=0,pre-check=0');
   next();
 })
 
 db.connect((err)=>{
   if(err){
-    console.log('connection error'+err);
+    console.log('connection error 🥲'+err);
   }
   else{
-    console.log('Database connected');
+    console.log('Database connected 🚀');
   }
 })
 
